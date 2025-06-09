@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import './page.css';
 
 interface Recipe {
   Id: number;
@@ -34,13 +35,13 @@ export default function RecipePage() {
         .map((r) => (
           <li key={r.Id}>
 
-            <div className="border rounded p-4 shadow-md max-w-md bg-white mb-4 text-gray-900">
-            <Link href={`./recipe/${r.Id}`} className="block hover:bg-gray-100 transition-colors">
+            <div>
+            <Link href={`./recipe/${r.Id}`} className="hover:bg-gray-100 transition-colors">
               <h2 className="text-xl font-bold mb-2 self-center">{r.Title}</h2>
 
               {/* Image */}
               {r.ImageUrl && (
-                <div className="mb-2">
+                <div className="mb-2 flex justify-center">
                   <Image
                     src={r.ImageUrl}
                     alt={r.Title}
@@ -50,12 +51,8 @@ export default function RecipePage() {
                   />
                 </div>
               )}
-
-              {/* Description */}
-              <p className="text-gray-600 mb-1"><strong>Description:</strong> {r.Description}</p>
-
-              {/* Author */}
-              <p className="text-sm text-gray-500 mb-2"><em>By {r.Author || 'Unknown'}</em></p>
+              <p className="text-sm text-gray-500 mb-2"><em>By: {r.Author || 'Unknown'}</em></p>
+              <p className="text-gray-600 mb-1">{r.Description}</p>
             </Link>
           </div>
           </li>

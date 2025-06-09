@@ -41,3 +41,26 @@ h2 {
 div > p {
     margin-top: 15px;
 }
+body {
+     max-width: 1200px;
+     margin: 0 auto;
+     background-color: #161616;
+ }
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
