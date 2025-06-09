@@ -1,0 +1,175 @@
+.admin-panel-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #23232a;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 2rem 2.5rem;
+  color: #f4f4f5;
+}
+
+.admin-panel-container h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #a5b4fc;
+  text-align: center;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  font-family: monospace, sans-serif;
+}
+
+.admin-form input,
+.admin-form textarea {
+  background: #18181b;
+  color: #f4f4f5;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border: 1.5px solid #818cf8;
+  background: #23232a;
+  outline: none;
+}
+
+.admin-form button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-form button:hover {
+  background: #818cf8;
+}
+
+.admin-sort-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-sort-row select {
+  background: #18181b;
+  color: #f4f4f5;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+}
+
+.admin-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-list li {
+  background: #18181b;
+  border-radius: 10px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.15s, background 0.15s;
+}
+
+.admin-list li:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  background: #23232a;
+}
+
+.admin-list .admin-actions button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-list .admin-actions .edit-btn {
+  background: #facc15;
+  color: #23232a;
+}
+
+.admin-list .admin-actions .edit-btn:hover {
+  background: #fde68a;
+}
+
+.admin-list .admin-actions .delete-btn {
+  background: #ef4444;
+  color: #fff;
+}
+
+.admin-list .admin-actions .delete-btn:hover {
+  background: #f87171;
+}
+
+.admin-list .admin-actions .hide-btn {
+  background: #6b7280;
+  color: #fff;
+}
+
+.admin-list .admin-actions .hide-btn:hover {
+  background: #a1a1aa;
+}
+
+.admin-panel-container .signout-btn {
+  margin-top: 2rem;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-panel-container .signout-btn:hover {
+  background: #f87171;
+}
+
+.hidden-label {
+  background: #ef4444;
+  color: #23232a;
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 0.15em 0.7em;
+  margin-left: 0.5em;
+  font-size: 0.95em;
+  letter-spacing: 1px;
+}
+
+.hidden-card {
+  background: #5c2626 !important;
+  color: #ffffff !important;
+  border: 2px solid #b91c1c;
+}
+
+.author-missing-card {
+  background: #5c4f26 !important;
+  color: #ffffff !important;
+  border: 2px solid #b9a91c;
+}

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { signOut } from "next-auth/react";
-import "@/app/globals.css";
+import "./AdminPanel.css";
 
 interface Recipe {
   Id: number;
@@ -105,16 +105,16 @@ export default function AdminPanel() {
     }
   });
 
+  // Example structure for your AdminPanel component
   return (
-    <div className="p-6 max-w mx-auto">
+    <div className="admin-panel-container p-6 max-w mx-auto">
       <h1 className="text-2xl font-bold mb-4">Admin Panel</h1>
-
-      <div className="flex flex-col gap-2 mb-4">
+      <form className="admin-form flex flex-col gap-2 mb-4" onSubmit={e => { e.preventDefault(); handleAddOrUpdateRecipe(); }}>
         <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" className="border p-2" />
         <input value={description} onChange={e => setDescription(e.target.value)} placeholder="Description" className="border p-2" />
         <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Content" className="border p-2" />
         <input value={author} onChange={e => setAuthor(e.target.value)} placeholder="Author" className="border p-2" />
-        <button onClick={handleAddOrUpdateRecipe} className="bg-blue-500 text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
           {editingId !== null ? 'Save Changes' : 'Add Recipe'}
         </button>
         {editingId !== null && (
@@ -126,9 +126,8 @@ export default function AdminPanel() {
             setAuthor('');
           }} className="text-sm text-gray-600">Cancel Edit</button>
         )}
-      </div>
-
-      <div className="mb-4 flex gap-2 items-center">
+      </form>
+      <div className="admin-sort-row mb-4 flex gap-2 items-center">
         <span>Sort by:</span>
         <select
           value={sort}
@@ -143,26 +142,34 @@ export default function AdminPanel() {
           <option value="author-desc">Author Z-A</option>
         </select>
       </div>
-
-      <ul className="space-y-2">
-        {sortedRecipes.map((r) => (
-          <li key={r.Id} className="border p-4 rounded flex justify-between items-center">
+      <ul className="admin-list space-y-2">
+        {sortedRecipes.map(r => (
+          <li
+            key={r.Id}
+            className={
+              `border p-4 rounded flex justify-between items-center` +
+              (r.Hidden ? ' hidden-card' : '') +
+              ((!r.Author || r.Author === 'Unknown') ? ' author-missing-card' : '')
+            }
+          >
             <div>
-              [{r.Id}] <strong>{r.Title}</strong> — By: {r.Author || 'Unknown'}{" "}
-              {r.Hidden && <span style={{ color: 'red' }}>HIDDEN</span>}
+              [{r.Id}] <strong>{r.Title}</strong> — By:{" "}
+              <span>
+                {r.Author || 'Unknown'}
+              </span>
+              {r.Hidden && <span className="hidden-label">HIDDEN</span>}
             </div>
-            <div className="space-x-2">
-              <button onClick={() => handleEdit(r)} className="bg-yellow-400 px-2 py-1 rounded">Edit</button>
-              <button onClick={() => handleDelete(r.Id)} className="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
-              <button onClick={() => toggleHide(r.Id, r.Hidden)} className="bg-gray-300 px-2 py-1 rounded">
+            <div className="admin-actions space-x-2">
+              <button className="edit-btn bg-yellow-400 px-2 py-1 rounded" onClick={() => handleEdit(r)}>Edit</button>
+              <button className="delete-btn bg-red-500 text-white px-2 py-1 rounded" onClick={() => handleDelete(r.Id)}>Delete</button>
+              <button className="hide-btn bg-gray-300 px-2 py-1 rounded" onClick={() => toggleHide(r.Id, r.Hidden)}>
                 {r.Hidden ? 'Show' : 'Hide'}
               </button>
             </div>
           </li>
         ))}
       </ul>
-
-      <button onClick={() => signOut()} className="mt-6 bg-red-500 text-white px-4 py-2 rounded">
+      <button className="signout-btn mt-6 bg-red-500 text-white px-4 py-2 rounded" onClick={() => signOut()}>
         Sign Out
       </button>
     </div>
