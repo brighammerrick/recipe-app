@@ -52,3 +52,5 @@ DB_PASSWORD=yourDBUserPassword
 DB_SERVER=yourDBServerName
 DB_NAME=yourDBName
 ```
+
+Place in your root directory
