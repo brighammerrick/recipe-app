@@ -41,7 +41,8 @@ The pages and images are generated from Id and Title.
 
 # .env.local format
 
-```
+```YAML
+
 ADMIN_USERNAME=yourAdminUsername
 ADMIN_PASSWORD=yourAdminPassword
 NEXTAUTH_SECRET=yourNextAuthSecret
