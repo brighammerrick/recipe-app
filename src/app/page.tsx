@@ -20,9 +20,13 @@ export default function RecipePage() {
 
   useEffect(() => {
     async function fetchRecipes() {
-      const res = await fetch("/api/admin/recipes"); // admin API endpoint, not /api/recipes
+      const res = await fetch("/api/recipes"); // <-- public endpoint
       const data = await res.json();
-      setRecipes(data);
+      if (Array.isArray(data)) {
+        setRecipes(data);
+      } else {
+        setRecipes([]);
+      }
     }
     fetchRecipes();
   }, []);

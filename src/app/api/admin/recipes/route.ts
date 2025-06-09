@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 import { getConnection } from "@/lib/db";
 import { titleToFilename } from "@/lib/utils";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/authOptions";
 
 export async function GET() {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const pool = await getConnection();
     const result = await pool.request().query("SELECT * FROM Recipes");
@@ -20,13 +27,17 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const { title, description, content, author } = await req.json(); // ← ADD CONTENT
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { title, description, content, author } = await req.json();
   const pool = await getConnection();
 
   const result = await pool.request().query("SELECT MAX(Id) AS maxId FROM Recipes");
   const maxId = result.recordset[0].maxId ?? -1;
   const newId = maxId + 1;
-
 
   await pool
     .request()
@@ -45,6 +56,11 @@ export async function POST(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const { id } = await req.json();
   const pool = await getConnection();
 
@@ -65,6 +81,11 @@ export async function DELETE(req: Request) {
 }
 
 export async function PATCH(req: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const { id, hidden } = await req.json();
   const pool = await getConnection();
 
