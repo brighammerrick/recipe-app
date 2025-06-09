@@ -38,3 +38,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # Dynamic Paging
 
 The pages and images are generated from Id and Title.
+
+# .env.local format
+
+```
+ADMIN_USERNAME=yourAdminUsername
+ADMIN_PASSWORD=yourAdminPassword
+NEXTAUTH_SECRET=yourNextAuthSecret
+
+DB_USER=yourDBUser
+DB_PASSWORD=yourDBUserPassword
+DB_SERVER=yourDBServerName
+DB_NAME=yourDBName
+```
