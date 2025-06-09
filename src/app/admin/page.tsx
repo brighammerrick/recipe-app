@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import "../globals.css";
 
 interface Recipe {
   Id: number;

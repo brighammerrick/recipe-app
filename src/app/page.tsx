@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Recipe {
   Id: number;
@@ -29,34 +30,37 @@ export default function RecipePage() {
   return (
     <ul>
       {recipes
-      .filter((r) => !r.Hidden)
-      .map((r) => (
-        <li key={r.Id}>
-          <div className="border rounded p-4 shadow-md max-w-md bg-white mb-4 text-gray-900">
-            <h2 className="text-xl font-bold mb-2 self-center">{r.Title}</h2>
+        .filter((r) => !r.Hidden)
+        .map((r) => (
+          <li key={r.Id}>
 
-            {/* Image */}
-            {r.ImageUrl && (
-              <div className="mb-2">
-                <Image
-                  src={r.ImageUrl}
-                  alt={r.Title}
-                  width={400}
-                  height={300}
-                  className="rounded"
-                />
-              </div>
-            )}
+            <div className="border rounded p-4 shadow-md max-w-md bg-white mb-4 text-gray-900">
+            <Link href={`./recipe/${r.Id}`} className="block hover:bg-gray-100 transition-colors">
+              <h2 className="text-xl font-bold mb-2 self-center">{r.Title}</h2>
 
-            {/* Description */}
-            <p className="text-gray-600 mb-1"><strong>Description:</strong> {r.Description}</p>
+              {/* Image */}
+              {r.ImageUrl && (
+                <div className="mb-2">
+                  <Image
+                    src={r.ImageUrl}
+                    alt={r.Title}
+                    width={400}
+                    height={300}
+                    className="rounded"
+                  />
+                </div>
+              )}
 
-            {/* Author */}
-            <p className="text-sm text-gray-500 mb-2"><em>By {r.Author || 'Unknown'}</em></p>
+              {/* Description */}
+              <p className="text-gray-600 mb-1"><strong>Description:</strong> {r.Description}</p>
 
+              {/* Author */}
+              <p className="text-sm text-gray-500 mb-2"><em>By {r.Author || 'Unknown'}</em></p>
+            </Link>
           </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+  ))
+}
+    </ul >
   );
 }
