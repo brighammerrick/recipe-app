@@ -1,6 +1,5 @@
 'use client';
 
-import "../globals.css";
 import AdminPanel from '@/components/AdminPanel';
 import { useSession, signIn } from 'next-auth/react';
 import { useEffect } from 'react';

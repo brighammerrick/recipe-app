@@ -1,7 +1,9 @@
 body {
      max-width: 1200px;
      margin: 0 auto;
-     background-color: #0a0a0a;
+     background: #18181b;
+     color: #f4f4f5;
+     font-family: 'Inter', sans-serif;
  }
 div {
     display: flex;
@@ -9,19 +11,92 @@ div {
     align-items: center;
 }
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 h2 {
     text-align: center;
+    color: #a5b4fc;
+    margin-bottom: 0.5rem;
 }
 a {
     text-decoration: none;
     color: white;
 }
 
-li > div {
-    border-bottom: #f1f1f1 1px solid;
+li {
+  background: #23232a;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.1s, box-shadow 0.1s;
+  padding: 1.5rem;
+}
+
+li:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  background: #27272a;
+}
+
+.text-gray-500 {
+  color: #a1a1aa;
+}
+
+.text-gray-600 {
+  color: #d4d4d8;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+input[type="text"] {
+  background: #27272a;
+  color: #f4f4f5;
+  border: 1px solid #3f3f46;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input[type="text"]:focus {
+  border: 1.5px solid #818cf8;
+  background: #23232a;
+}
+
+.search-bar-row {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }

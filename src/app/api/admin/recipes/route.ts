@@ -86,14 +86,30 @@ export async function PATCH(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { id, hidden } = await req.json();
+  const { id, hidden, title, description, content, author } = await req.json();
   const pool = await getConnection();
 
+  // If only hidden is provided, just update hidden
+  if (typeof hidden === "boolean" && !title && !description && !content && !author) {
+    await pool
+      .request()
+      .input("id", id)
+      .input("hidden", hidden)
+      .query("UPDATE Recipes SET Hidden = @hidden WHERE Id = @id");
+    return NextResponse.json({ message: "Recipe hidden status updated" });
+  }
+
+  // Otherwise, update all fields
   await pool
     .request()
     .input("id", id)
-    .input("hidden", hidden)
-    .query("UPDATE Recipes SET Hidden = @hidden WHERE Id = @id");
+    .input("title", title)
+    .input("description", description)
+    .input("content", content)
+    .input("author", author)
+    .query(
+      "UPDATE Recipes SET Title = @title, Description = @description, Content = @content, Author = @author WHERE Id = @id"
+    );
 
   return NextResponse.json({ message: "Recipe updated" });
 }
