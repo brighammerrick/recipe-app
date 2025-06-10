@@ -92,6 +92,10 @@ export default function RecipePage() {
     setSearch(searchInput);
   }
 
+  useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   return (
     <div className="main-content">
       <div className="search-bar-row sticky-search">
@@ -137,6 +141,7 @@ export default function RecipePage() {
                           width={400}
                           height={300}
                           className="rounded"
+                          priority
                         />
                       </div>
                     ) : null}
