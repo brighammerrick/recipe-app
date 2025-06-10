@@ -18,20 +18,26 @@ export default async function RecipePage({ params }: { params: { id: string } })
     return <div className="p-8 text-center text-red-600"><h1>Recipe not found or is hidden.</h1></div>;
   }
 
-  const imageUrl = `/images/${titleToFilename(recipe.Title)}`;
-
+  const imgSrc = `/images/${titleToFilename(recipe.Title)}`;
+  console.warn('Invalid imgSrc for recipe:', recipe.Id, imgSrc);
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <h1 className="text-4xl font-bold mb-2">{recipe.Title}</h1>
       <p className="text-gray-300 mb-4">By: {recipe.Author || "Unknown"}</p>
 
-      <Image
-        src={imageUrl}
-        alt={recipe.Title}
-        width={800}
-        height={400}
-        className="rounded-lg mb-6 w-full h-auto object-cover"
-      />
+      {typeof imgSrc === 'string' &&
+        imgSrc.length > 0 &&
+        (imgSrc.startsWith('http://') ||
+          imgSrc.startsWith('https://') ||
+          imgSrc.startsWith('/')) && (
+          <Image
+            src={imgSrc}
+            alt={recipe.Title}
+            width={400}
+            height={300}
+            className="rounded"
+          />
+        )}
 
       <p className="text-xl text-gray-300 mb-6 italic">{recipe.Description}</p>
 

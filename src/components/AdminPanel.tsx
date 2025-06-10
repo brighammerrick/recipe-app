@@ -65,6 +65,7 @@ export default function AdminPanel() {
     setContent(recipe.Content);
     setAuthor(recipe.Author);
     setEditingId(recipe.Id);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // <-- Add this line
   };
 
   const handleDelete = async (id: number) => {
