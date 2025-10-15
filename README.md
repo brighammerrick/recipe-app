@@ -52,5 +52,9 @@ DB_PASSWORD=yourDBUserPassword
 DB_SERVER=yourDBServerName
 DB_NAME=yourDBName
 ```
+For NEXTAUT_SECRET generation 
+```bash
+openssl rand -base64 32
+```
 
 Place in your root directory
