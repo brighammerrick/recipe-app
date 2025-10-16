@@ -7,20 +7,6 @@ body {
   margin: 15px;
 }
 
-button {
-  background-color: #ededed;
-  color: #0a0a0a;
-  border: none;
-  padding: 0.25rem 0.5rem;
-  border-radius:0.25rem;
-  cursor: pointer;
-  height: 40px;
-}
-button:hover {
-  background-color: #0a0a0a;
-  color: #ededed;
-  border: 1px solid #ededed;
-}
 h1 {
   display: flex;
   justify-content: center;
@@ -29,7 +15,9 @@ h1 {
 
 li {
   border-bottom: 2px solid #ededed7e;
+  border-radius: 0px;
   padding: 5px;
+  background: none;
 }
 h2 {
   display: flex;
