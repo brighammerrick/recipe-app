@@ -61,4 +61,4 @@ or
 npx auth secret
 ```
 
-Place in your root directory
+Place .env.local in your root directory
