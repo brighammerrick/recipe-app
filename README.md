@@ -56,5 +56,9 @@ For NEXTAUTH_SECRET generation
 ```bash
 openssl rand -base64 32
 ```
+or 
+```bash
+npx auth secret
+```
 
 Place in your root directory
