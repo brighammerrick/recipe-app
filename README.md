@@ -55,9 +55,7 @@ DB_NAME=yourDBName
 For NEXTAUTH_SECRET generation 
 ```bash
 openssl rand -base64 32
-```
-or 
-```bash
+#or
 npx auth secret
 ```
 
